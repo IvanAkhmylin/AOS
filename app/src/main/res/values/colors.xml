@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1976d2</color>
+    <color name="TransparentColorPrimary">#801976D2</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorSecondary">#D0C2F3</color>
+
+    <color name="colorAccent">#4CAF50</color>
+    <color name="primary_light">#B3E5FC</color>
+
+    <color name="background">#F3F3F3</color>
+    <color name="surface">#F3F3F3</color>
+    <color name="colorPrimaryButtonDisable">@color/TransparentColorPrimary</color>
+
+    <color name="gray">#747474</color>
+    <color name="edit_text_background">#FFFFFF</color>
+    <color name="chip_background_color">#FFFFFF</color>
+    <color name="chip_text_color">#000000</color>
+
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+
+    <color name="white" >#FFFFFF</color>
+    <color name="black" >#000000</color>
+
+    <color name="drawer_background" >#121212</color>
+    <color name="colorButtonRipple">#000000</color>
+
+    <color name="colorTextInputLayoutOnFocus">@color/colorPrimary</color>
+    <color name="colorTextInputLayoutWithoutFocus">#5E5E5E</color>
+    <color name="colorTextInputLayoutPasswordToggle">#5E5E5E</color>
+    <color name="colorTextInputLayoutError">#B30000</color>
+</resources>

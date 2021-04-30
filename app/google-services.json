@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "891159691057",
+    "project_id": "kstu-aos",
+    "storage_bucket": "kstu-aos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891159691057:android:59357ae558c0c487e77a10",
+        "android_client_info": {
+          "package_name": "com.vanganistan.aos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "891159691057-g9avvokv4o8maagui1968bt30sgbl3d0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAhSz2-OepIEyRz0n_XKF3SgqUBrsTBnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891159691057-g9avvokv4o8maagui1968bt30sgbl3d0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

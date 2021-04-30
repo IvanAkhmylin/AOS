@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <com.vanganistan.aos.shared.ToolbarView
+        app:title="Регистрация"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            app:endIconTint="@color/colorTextInputLayoutPasswordToggle"
+            app:errorIconDrawable="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/name"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:ems="10"
+                android:hint="ФИО"
+                android:inputType="textEmailAddress"
+                android:maxLength="50" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            app:endIconTint="@color/colorTextInputLayoutPasswordToggle"
+            app:errorIconDrawable="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/group"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:ems="10"
+                android:hint="Группа"
+                android:inputType="textEmailAddress"
+                android:maxLength="20" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            app:endIconTint="@color/colorTextInputLayoutPasswordToggle"
+            app:errorIconDrawable="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/email"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            app:endIconTint="@color/colorTextInputLayoutPasswordToggle"
+            app:errorIconDrawable="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/password"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:ems="10"
+                android:hint="Пароль"
+                android:inputType="textEmailAddress"
+                android:maxLength="20" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button"
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginVertical="16dp"
+            android:fontFamily="@font/rubik_light"
+            android:text="Продолжить"
+            android:textAllCaps="false"
+            android:textSize="@dimen/small_text_size"
+            android:textStyle="bold" />
+    </LinearLayout>
+</FrameLayout>

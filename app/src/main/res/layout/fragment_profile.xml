@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.fragments.ProfileFragment">
+
+    <TextView
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PROFILE" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button"
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginVertical="16dp"
+        android:fontFamily="@font/rubik_light"
+        android:text="LOG OUT"
+        android:textAllCaps="false"
+        android:textSize="@dimen/small_text_size"
+        android:textStyle="bold" />
+</FrameLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/lectureFragment">
+    <fragment
+        android:id="@+id/labsFragment"
+        android:name="com.vanganistan.aos.main.fragments.LabsFragment"
+        tools:layout="@layout/fragment_labs"
+        android:label="LabsFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.vanganistan.aos.main.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/lectureFragment"
+        android:name="com.vanganistan.aos.main.fragments.lecture.LectureFragment"
+        android:label="fragment_lecture"
+        tools:layout="@layout/fragment_lecture" >
+
+        <action
+            android:id="@+id/action_lectureFragment_to_lectureDetailsFragment2"
+            app:destination="@id/lectureDetailsFragment"
+            app:enterAnim="@anim/enter_left"
+            app:exitAnim="@anim/exit_right"
+            app:popEnterAnim="@anim/pop_enter_left"
+            app:popExitAnim="@anim/pop_exit_right"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/testsFragment"
+        tools:layout="@layout/fragment_tests"
+        android:name="com.vanganistan.aos.main.fragments.TestsFragment"
+        android:label="TestsFragment" />
+    <fragment
+        tools:layout="@layout/lecture_fragment_details"
+        android:id="@+id/lectureDetailsFragment"
+        android:name="com.vanganistan.aos.main.fragments.lecture.LectureDetailsFragment"
+        android:label="LectureDetailsFragment" />
+    <fragment
+        android:id="@+id/lectureListFragment"
+        tools:layout="@layout/lecture_list_fragment"
+        android:name="com.vanganistan.aos.main.fragments.lecture.LectureListFragment"
+        android:label="LectureListFragment" >
+
+    </fragment>
+</navigation>

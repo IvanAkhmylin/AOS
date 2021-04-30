@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/lectureFragment"
+        android:icon="@drawable/ic_lecture"
+        app:showAsAction="always"
+        android:orderInCategory="1"
+        android:title="Лекции"/>
+
+    <item
+        android:id="@+id/testsFragment"
+        android:icon="@drawable/ic_test"
+        app:showAsAction="always"
+        android:orderInCategory="2"
+        android:title="Тесты"
+        />
+
+    <!--    <item-->
+    <!--            android:id="@+id/navigation_notificationss"-->
+    <!--            android:title="@string/title_notifications"/>-->
+
+    <item
+        android:id="@+id/labsFragment"
+        android:icon="@drawable/ic_labs"
+        app:showAsAction="always"
+        android:orderInCategory="3"
+        android:title="Лабораторные "/>
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_profile"
+        app:showAsAction="always"
+        android:orderInCategory="4"
+        android:title="Профиль"/>
+
+</menu>

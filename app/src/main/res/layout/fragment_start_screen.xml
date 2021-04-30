@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".start.StartScreenFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="58dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="270dp"
+            android:src="@drawable/start_screen_image" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Защита информации"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:id="@+id/button_signIn"
+            app:strokeWidth="2dp"
+            app:strokeColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            app:cornerRadius="5dp"
+            android:padding="12dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="32dp"
+            android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/rubik_light"
+            android:text="Войти"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/small_text_size"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button"
+            android:id="@+id/button_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginVertical="16dp"
+            android:fontFamily="@font/rubik_light"
+            android:text="Регистрация"
+            android:textAllCaps="false"
+            android:textSize="@dimen/small_text_size"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</FrameLayout>
