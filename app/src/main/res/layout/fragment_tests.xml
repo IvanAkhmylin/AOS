@@ -3,14 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.fragments.ProfileFragment">
-
-    <TextView
-        android:textSize="30sp"
+    <ProgressBar
+        android:id="@+id/progress"
+        android:visibility="gone"
+        tools:visibility="visible"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:layout_width="48dp"
+        android:layout_height="48dp"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:fontFamily="@font/rubik_light"
+        android:includeFontPadding="false"
+        android:background="@color/colorPrimary"
+        app:tabTextColor="#FFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tabMaxWidth="0dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_container"
+        app:tabRippleColor="#F0F2FF"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TEST" />
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_add"
+        android:layout_margin="16dp" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
 
 </FrameLayout>

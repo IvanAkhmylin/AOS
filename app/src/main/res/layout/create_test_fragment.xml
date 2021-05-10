@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:background="@color/colorPrimary"
+            android:id="@+id/spinner_container"
+            android:elevation="1dp"
+            android:backgroundTint="@color/colorPrimary"
+            app:cardCornerRadius="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                android:focusable="false"
+                app:hintTextColor="@color/primary_text"
+                app:hintEnabled="false"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:endIconTint="@color/colorPrimary"
+                android:background="@color/background"
+                android:id="@+id/text_input"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:hint="Лекция"
+                    android:elevation="2dp"
+                    android:focusedByDefault="false"
+                    android:imeOptions="actionDone"
+                    android:scrollbarThumbVertical="@color/colorPrimary"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:maxLength="40"
+                    android:background="@color/edit_text_background"
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_recycler_view"
+            android:layout_width="match_parent"
+            tools:listitem="@layout/create_test_item"
+            android:overScrollMode="never"
+            tools:itemCount="2"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button"
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginVertical="16dp"
+            android:fontFamily="@font/rubik_light"
+            android:text="Сохранить"
+            android:textAllCaps="false"
+            android:textSize="@dimen/small_text_size"
+            android:textStyle="bold" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

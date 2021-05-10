@@ -11,6 +11,7 @@ import com.vanganistan.aos.Utils.Constants
 import com.vanganistan.aos.Utils.Constants.FAILURE
 import com.vanganistan.aos.Utils.Resource
 import com.vanganistan.aos.models.Lecture
+import com.vanganistan.aos.models.Test
 import kotlinx.coroutines.tasks.await
 import java.io.File
 import java.util.*
@@ -175,6 +176,23 @@ class Repository {
                 action(Resource.error(error = java.lang.Exception(FAILURE)))
             }
     }
+    fun getTests(action: (Resource<ArrayList<Test>>) -> Unit) {
+        App.db.collection("tests")
+            .get()
+            .addOnSuccessListener { result ->
+                val list = arrayListOf<Test>()
+                for (document in result) {
+                    document.toObject(Test::class.java)?.let { it1 ->
+                        list.add(it1)
+                    }
+                }
+
+                action(Resource.success(list))
+            }
+            .addOnFailureListener { exception ->
+                action(Resource.error(error = java.lang.Exception(FAILURE)))
+            }
+    }
 
     fun getLecturesDetail(lecture: Lecture, action: (String) -> Unit) {
         if (App.sharedPreferences.contains(lecture.id.toString())){
@@ -192,5 +210,20 @@ class Repository {
             }
         }
 
+    }
+
+    fun uploadTest(test: Test, action: (String) -> Unit) {
+        test.id = (0..1000000000).random()
+        try {
+            App.db.collection("tests").document(test.id.toString()).set(test)
+                .addOnSuccessListener {
+                    action(Constants.SUCCESSFUL)
+
+                }.addOnCanceledListener {
+                    action(FAILURE)
+                }
+        } catch (e: java.lang.Exception) {
+            action(FAILURE)
+        }
     }
 }

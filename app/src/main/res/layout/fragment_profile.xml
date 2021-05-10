@@ -3,15 +3,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.fragments.ProfileFragment">
 
-    <TextView
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:gravity="center"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PROFILE" />
+        android:layout_height="279dp"
+        android:background="@drawable/bg_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_launcher_background"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fio"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="13dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:fontFamily="@font/rubik_light"
+                android:includeFontPadding="false"
+                android:textColor="#FFFFFF"
+                android:text="Николай Петрович" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/group"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="24dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/rubik_light"
+                android:includeFontPadding="false"
+                android:textColor="#FFFFFF"
+                android:text="Группа: ИВТ-1-17" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/email"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="13dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/rubik_light"
+                android:includeFontPadding="false"
+                android:textColor="#FFFFFF"
+                android:text="Email: vanganistan@gmail.com" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/phone"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="13dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/rubik_light"
+                android:includeFontPadding="false"
+                android:textColor="#FFFFFF"
+                android:text="Телефон: +996550120117" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button"

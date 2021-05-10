@@ -7,16 +7,20 @@ import androidx.lifecycle.viewModelScope
 import com.vanganistan.aos.Repository
 import com.vanganistan.aos.Utils.Resource
 import com.vanganistan.aos.models.Lecture
+import com.vanganistan.aos.models.Test
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LectureViewModel: ViewModel(){
+class ContentViewModel: ViewModel(){
     val lectureUploadLiveData = MutableLiveData<Resource<String>>()
     val lectureDetailLiveData = MutableLiveData<Resource<String>>()
+    val testUpload = MutableLiveData<Resource<String>>()
     val lecturesLiveData = MutableLiveData<Resource<ArrayList<Lecture>>>()
+    val testsLiveData = MutableLiveData<Resource<ArrayList<Test>>>()
 
     init {
         getLectures()
+        getTests()
     }
 
     fun uploadLecture(lecture: Lecture) {
@@ -35,6 +39,14 @@ class LectureViewModel: ViewModel(){
             }
         }
     }
+    fun getTests() {
+        testsLiveData.postValue(Resource.loading())
+        viewModelScope.launch(Dispatchers.IO){
+            Repository().getTests() {
+                testsLiveData.postValue(it)
+            }
+        }
+    }
 
 
     fun getLectureDetail(lecture: Lecture) {
@@ -42,6 +54,15 @@ class LectureViewModel: ViewModel(){
         viewModelScope.launch(Dispatchers.IO){
             Repository().getLecturesDetail(lecture) {
                 lectureDetailLiveData.postValue(Resource.success(it))
+            }
+        }
+    }
+
+    fun uploadTest(test: Test) {
+        testUpload.postValue(Resource.loading())
+        viewModelScope.launch(Dispatchers.IO){
+            Repository().uploadTest(test) {
+                testUpload.postValue(Resource.success(it))
             }
         }
     }

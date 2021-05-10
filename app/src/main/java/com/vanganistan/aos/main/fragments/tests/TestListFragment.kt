@@ -1,4 +1,4 @@
-package com.vanganistan.aos.main.fragments.lecture
+package com.vanganistan.aos.main.fragments.tests
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,25 +13,27 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vanganistan.aos.R
 import com.vanganistan.aos.databinding.LectureListFragmentBinding
-import com.vanganistan.aos.main.fragments.lecture.adapters.LectureRecyclerAdapter
+import com.vanganistan.aos.databinding.TestListFragmentBinding
+import com.vanganistan.aos.main.fragments.tests.adapters.TestListAdapter
 import com.vanganistan.aos.models.Lecture
+import com.vanganistan.aos.models.Test
 
-class LectureListFragment : Fragment() {
+class TestListFragment : Fragment() {
 
-    private var _binding: LectureListFragmentBinding? = null
-    private val binding: LectureListFragmentBinding get() = _binding!!
-    private var list = arrayListOf<Lecture>()
+    private var _binding: TestListFragmentBinding? = null
+    private val binding: TestListFragmentBinding get() = _binding!!
+    private var list = arrayListOf<Test>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = LectureListFragmentBinding.inflate(inflater)
+    ): View {
+        _binding = TestListFragmentBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.getParcelableArrayList<Lecture>(LECTURE_LIST)?.let {
+        arguments?.getParcelableArrayList<Test>(LECTURE_LIST)?.let {
             list = it
         }
     }
@@ -41,22 +43,17 @@ class LectureListFragment : Fragment() {
         binding.myRecyclerView.apply {
             setItemViewCacheSize(30)
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            adapter = LectureRecyclerAdapter{ item ->
-                Navigation.findNavController(requireActivity(),
-                    R.id.nav_host_fragment
-                ).navigate(R.id.action_lectureFragment_to_lectureDetailsFragment2, bundleOf(
-                    "LectureDetails" to item,
-                    "title" to item.fileDescription
-                ))
-            }
+            adapter = TestListAdapter(list, {
+
+            }, {
+
+            })
             binding.myRecyclerView.scheduleLayoutAnimation()
             setHasFixedSize(true)
         }
 
         binding.myRecyclerView.layoutManager!!.onRestoreInstanceState(binding?.myRecyclerView?.layoutManager?.onSaveInstanceState())
-        (binding.myRecyclerView.adapter as LectureRecyclerAdapter).updateRecyclerAdapter(
-            list
-        )
+
 
         binding.myRecyclerView.isNestedScrollingEnabled = false
         binding.myRecyclerView.scheduleLayoutAnimation()
@@ -71,12 +68,12 @@ class LectureListFragment : Fragment() {
         private const val LECTURE_LIST= "LECTURE_LIST"
 
         fun newInstance(
-            list: List<Lecture>
-        ): LectureListFragment {
+            list: List<Test>
+        ): TestListFragment {
             val arguments = bundleOf(
                 LECTURE_LIST to list
             )
-            return LectureListFragment().apply { this.arguments = arguments }
+            return TestListFragment().apply { this.arguments = arguments }
         }
     }
 }

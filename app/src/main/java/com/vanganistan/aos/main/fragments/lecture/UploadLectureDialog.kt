@@ -20,21 +20,20 @@ import com.vanganistan.aos.Utils.Constants
 import com.vanganistan.aos.Utils.Resource
 import com.vanganistan.aos.databinding.UploadLectureDialogBinding
 import com.vanganistan.aos.models.Lecture
-import com.vanganistan.aos.start.signIn.SignInViewModel
 
 class UploadLectureDialog() : BottomSheetDialogFragment() {
 
     private var _binding: UploadLectureDialogBinding? = null
     private val binding: UploadLectureDialogBinding get() = _binding!!
 
-    private lateinit var mViewModel: LectureViewModel
+    private lateinit var mViewModel: ContentViewModel
     private lateinit var progressDialog: ProgressDialog
 
     private val lecture = Lecture()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mViewModel = ViewModelProvider(this@UploadLectureDialog, ViewModelProvider.NewInstanceFactory()).get(LectureViewModel::class.java)
+        mViewModel = ViewModelProvider(this@UploadLectureDialog, ViewModelProvider.NewInstanceFactory()).get(ContentViewModel::class.java)
         setStyle(STYLE_NORMAL, R.style.AppBottomSheetDialogTheme)
     }
 

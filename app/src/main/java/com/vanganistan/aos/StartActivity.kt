@@ -1,7 +1,11 @@
 package com.vanganistan.aos
 
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
 
 
@@ -12,7 +16,7 @@ class StartActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_start)
 
-        val navController = Navigation.findNavController(this, R.id.nav_host)
+        val navController = Navigation.findNavController(this@StartActivity, R.id.nav_host)
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
 
         if(App.mAuth.currentUser != null && App.mAuth.currentUser!!.isEmailVerified){
@@ -24,6 +28,7 @@ class StartActivity : AppCompatActivity() {
 
         navController.graph = navGraph
     }
+
 
 
 

@@ -9,22 +9,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.tabs.TabLayoutMediator
-import com.vanganistan.aos.Utils.Constants
 import com.vanganistan.aos.Utils.Resource
-import com.vanganistan.aos.Utils.ZoomOutPageTransformer
-import com.vanganistan.aos.databinding.FragmentLectureBinding
 import com.vanganistan.aos.databinding.LectureFragmentDetailsBinding
-import com.vanganistan.aos.main.fragments.lecture.adapters.LectureViewPagerAdapter
 import com.vanganistan.aos.models.Lecture
-import java.io.File
 
 class LectureDetailsFragment : Fragment() {
 
     private var _binding: LectureFragmentDetailsBinding? = null
     private val binding: LectureFragmentDetailsBinding get() = _binding!!
 
-    private lateinit var mViewModel: LectureViewModel
+    private lateinit var mViewModel: ContentViewModel
     private lateinit var lecture: Lecture
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +34,7 @@ class LectureDetailsFragment : Fragment() {
                 lecture = it
             }
         }
-        mViewModel = ViewModelProvider(this@LectureDetailsFragment, ViewModelProvider.NewInstanceFactory()).get(LectureViewModel::class.java)
+        mViewModel = ViewModelProvider(this@LectureDetailsFragment, ViewModelProvider.NewInstanceFactory()).get(ContentViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -55,7 +49,6 @@ class LectureDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbar.setTitle(lecture.fileDescription)
         mViewModel.getLectureDetail(lecture)
         mViewModel.lectureDetailLiveData.observe(viewLifecycleOwner, Observer {
             when (it.state) {

@@ -8,16 +8,16 @@
         android:id="@+id/labsFragment"
         android:name="com.vanganistan.aos.main.fragments.LabsFragment"
         tools:layout="@layout/fragment_labs"
-        android:label="LabsFragment" />
+        android:label="Лабораторные" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.vanganistan.aos.main.fragments.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Профиль"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/lectureFragment"
         android:name="com.vanganistan.aos.main.fragments.lecture.LectureFragment"
-        android:label="fragment_lecture"
+        android:label="Лекции"
         tools:layout="@layout/fragment_lecture" >
 
         <action
@@ -32,18 +32,37 @@
     <fragment
         android:id="@+id/testsFragment"
         tools:layout="@layout/fragment_tests"
-        android:name="com.vanganistan.aos.main.fragments.TestsFragment"
-        android:label="TestsFragment" />
+        android:name="com.vanganistan.aos.main.fragments.tests.TestsFragment"
+        android:label="Тестирование" >
+        <action
+            android:id="@+id/action_testsFragment_to_createTestFragment"
+            app:destination="@id/createTestFragment"
+            app:enterAnim="@anim/enter_left"
+            app:exitAnim="@anim/exit_right"
+            app:popEnterAnim="@anim/pop_enter_left"
+            app:popExitAnim="@anim/pop_exit_right"/>
+    </fragment>
+
     <fragment
         tools:layout="@layout/lecture_fragment_details"
         android:id="@+id/lectureDetailsFragment"
         android:name="com.vanganistan.aos.main.fragments.lecture.LectureDetailsFragment"
-        android:label="LectureDetailsFragment" />
+        android:label="{title}" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+
     <fragment
         android:id="@+id/lectureListFragment"
         tools:layout="@layout/lecture_list_fragment"
         android:name="com.vanganistan.aos.main.fragments.lecture.LectureListFragment"
-        android:label="LectureListFragment" >
+        android:label="Лекции" >
 
     </fragment>
+    <fragment
+        android:id="@+id/createTestFragment"
+        tools:layout="@layout/create_test_fragment"
+        android:name="com.vanganistan.aos.main.fragments.tests.CreateTestFragment"
+        android:label="Создание теста" />
 </navigation>

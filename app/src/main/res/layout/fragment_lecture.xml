@@ -15,8 +15,10 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        app:tabTextColor="#FFF"
         android:fontFamily="@font/rubik_light"
         android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"

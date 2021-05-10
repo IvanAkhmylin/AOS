@@ -16,6 +16,7 @@
 
         <activity
             android:name=".StartActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
