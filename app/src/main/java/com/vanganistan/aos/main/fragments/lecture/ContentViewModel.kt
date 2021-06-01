@@ -8,6 +8,7 @@ import com.vanganistan.aos.Repository
 import com.vanganistan.aos.Utils.Resource
 import com.vanganistan.aos.models.Lecture
 import com.vanganistan.aos.models.Test
+import com.vanganistan.aos.models.UserTestAction
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -15,6 +16,7 @@ class ContentViewModel: ViewModel(){
     val lectureUploadLiveData = MutableLiveData<Resource<String>>()
     val lectureDetailLiveData = MutableLiveData<Resource<String>>()
     val testUpload = MutableLiveData<Resource<String>>()
+    val answerUpload = MutableLiveData<Resource<String>>()
     val lecturesLiveData = MutableLiveData<Resource<ArrayList<Lecture>>>()
     val testsLiveData = MutableLiveData<Resource<ArrayList<Test>>>()
 
@@ -66,4 +68,15 @@ class ContentViewModel: ViewModel(){
             }
         }
     }
+
+    fun uploadAction(info: UserTestAction) {
+        answerUpload.postValue(Resource.loading())
+        viewModelScope.launch(Dispatchers.IO){
+            Repository().uploadAnswer(info) {
+                answerUpload.postValue(Resource.success(it))
+            }
+        }
+    }
+
+
 }

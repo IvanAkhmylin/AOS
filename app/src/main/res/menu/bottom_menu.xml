@@ -35,4 +35,11 @@
         android:orderInCategory="4"
         android:title="Профиль"/>
 
+  <item
+        android:id="@+id/chatFragment"
+        android:icon="@drawable/ic_baseline_chat_24"
+        app:showAsAction="always"
+        android:orderInCategory="5"
+        android:title="Чат"/>
+
 </menu>

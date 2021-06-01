@@ -5,13 +5,14 @@ import android.util.Log
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nambasoft.stepapp.app_models.User
 import com.vanganistan.aos.App.Companion.editor
 import com.vanganistan.aos.Utils.Constants
 import com.vanganistan.aos.Utils.Constants.FAILURE
 import com.vanganistan.aos.Utils.Resource
 import com.vanganistan.aos.models.Lecture
 import com.vanganistan.aos.models.Test
+import com.vanganistan.aos.models.User
+import com.vanganistan.aos.models.UserTestAction
 import kotlinx.coroutines.tasks.await
 import java.io.File
 import java.util.*
@@ -79,18 +80,30 @@ class Repository {
 
     }
 
-    fun getUserData(email: String): LiveData<User> {
-        App.db.collection("users")
-            .whereEqualTo("email", email)
+    fun getUserData(id: String): LiveData<User> {
+        App.db.collection("users").document(id)
             .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
-                Log.e("onSnapshot", "$querySnapshot, $firebaseFirestoreException")
                 if (firebaseFirestoreException == null) {
-                    userData.postValue(querySnapshot?.firstOrNull()?.toObject(User::class.java))
+                    userData.postValue(querySnapshot?.toObject(User::class.java))
                 }
-
             }
 
         return userData
+    }
+
+    fun setupUserImage(uri: Uri?, onSuccess: () -> Unit) {
+        App.mStorage.child("UserProfileImage")
+            .child(App.mAuth.currentUser?.uid!!)
+            .putFile(uri!!)
+            .addOnSuccessListener {
+                App.mStorage.child("UserProfileImage")
+                    .child(App.mAuth.currentUser?.uid!!).downloadUrl.addOnSuccessListener {
+                        App.db.collection("users").document(App.mAuth.currentUser!!.uid).update("userImage", it.toString())
+                            .addOnSuccessListener {
+                                onSuccess()
+                            }
+                    }
+            }
     }
 
     fun deleteUser(onResume: (String) -> Unit) {
@@ -116,6 +129,7 @@ class Repository {
                 }
             }
     }
+
 
     suspend fun uploadLecture(
         lecture: Lecture,
@@ -226,4 +240,22 @@ class Repository {
             action(FAILURE)
         }
     }
+
+    fun uploadAnswer(info: UserTestAction, action: (String) -> Unit) {
+        val id = (0..1000000000).random()
+
+        try {
+            App.db.collection("users")
+                .document(App.mAuth.uid.toString()).update("actions.${id}",  info)
+                .addOnSuccessListener {
+                    action(Constants.SUCCESSFUL)
+
+                }.addOnCanceledListener {
+                    action(FAILURE)
+                }
+        } catch (e: java.lang.Exception) {
+            action(FAILURE)
+        }
+    }
+
 }

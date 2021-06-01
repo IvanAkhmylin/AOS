@@ -46,7 +46,8 @@ class MainFragment : Fragment() {
                 R.id.lectureFragment,
                 R.id.testsFragment,
                 R.id.labsFragment,
-                R.id.profileFragment
+                R.id.profileFragment,
+                R.id.chatFragment
             ), binding.drawerLayout
         )
         setupDrawerLayout()

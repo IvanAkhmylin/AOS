@@ -14,12 +14,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 import com.vanganistan.aos.R
-import com.vanganistan.aos.models.TestModel
+import com.vanganistan.aos.models.TestQuestion
+import android.widget.LinearLayout
+
+
+
 
 class CreateTestRecyclerAdapter(
-    val onClick: (TestModel) -> Unit
+    val isInputMutable: Boolean = true
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var data = ArrayList<TestModel>()
+    var data = ArrayList<TestQuestion>()
     var animatedPosition = -1
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -36,6 +40,7 @@ class CreateTestRecyclerAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
         return when (viewType) {
             TestListAdapter.SHEET_ITEM -> {
                 val root = LayoutInflater.from(parent.context).inflate(R.layout.create_test_item, parent, false)
@@ -43,9 +48,24 @@ class CreateTestRecyclerAdapter(
             }
             else -> {
                 val root = LayoutInflater.from(parent.context).inflate(R.layout.create_test_control_item, parent, false)
+
+                val param = root.getLayoutParams()
+                if (isInputMutable) {
+                    param.height = LinearLayout.LayoutParams.WRAP_CONTENT
+                    param.width = LinearLayout.LayoutParams.MATCH_PARENT
+                    root.setVisibility(View.VISIBLE)
+                } else {
+                    root.setVisibility(View.GONE)
+                    param.height = 0
+                    param.width = 0
+                }
+                root.setLayoutParams(param)
+
                 TestHeaderHolder(root)
             }
         }
+
+
     }
 
     override fun getItemCount(): Int {
@@ -62,21 +82,34 @@ class CreateTestRecyclerAdapter(
     inner class TestItemHolder(
         private val binding: View
     ) : RecyclerView.ViewHolder(binding) {
-        fun setData(model: TestModel) {
+        fun setData(model: TestQuestion) {
             initListeners()
             initData(model)
         }
 
-        private fun initData(model: TestModel){
+        private fun initData(model: TestQuestion){
             binding.findViewById<TextView>(R.id.title).text = "Вопрос № ${adapterPosition}"
             binding.findViewById<TextInputLayout>(R.id.question).editText?.setText(model.question)
+            binding.findViewById<TextInputLayout>(R.id.question).editText!!.isFocusable = isInputMutable
+
             binding.findViewById<TextInputLayout>(R.id.answer1).editText?.setText(model.answers[0])
+            binding.findViewById<TextInputLayout>(R.id.answer1).editText!!.isFocusable = isInputMutable
+
             binding.findViewById<TextInputLayout>(R.id.answer2).editText?.setText(model.answers[1])
+            binding.findViewById<TextInputLayout>(R.id.answer2).editText!!.isFocusable = isInputMutable
+
             binding.findViewById<TextInputLayout>(R.id.answer3).editText?.setText(model.answers[2])
+            binding.findViewById<TextInputLayout>(R.id.answer3).editText!!.isFocusable = isInputMutable
+
             binding.findViewById<TextInputLayout>(R.id.answer4).editText?.setText(model.answers[3])
+            binding.findViewById<TextInputLayout>(R.id.answer4).editText!!.isFocusable = isInputMutable
+
             val group =  binding.findViewById<RadioGroup>(R.id.module_group)
             val id = group.getChildAt(model.trueAnswerIndex).id
-            group.check(id)
+
+            if (isInputMutable) {
+                group.check(id)
+            }
         }
         private fun initListeners(){
             val context = binding.context
@@ -96,10 +129,16 @@ class CreateTestRecyclerAdapter(
                 data[adapterPosition- 1].answers[3] = it.toString()
             }
 
-            binding.findViewById<RadioGroup>(R.id.module_group).setOnCheckedChangeListener { group, checkedId ->
-                data[adapterPosition- 1].trueAnswerIndex = binding.findViewById<RadioButton>(checkedId).text.toString().toInt() - 1
-            }
+            if (isInputMutable){
+                binding.findViewById<RadioGroup>(R.id.module_group).setOnCheckedChangeListener { group, checkedId ->
+                    data[adapterPosition- 1].trueAnswerIndex = binding.findViewById<RadioButton>(checkedId).text.toString().toInt() - 1
+                }
+            }else{
+                binding.findViewById<RadioGroup>(R.id.module_group).setOnCheckedChangeListener { group, checkedId ->
+                    data[adapterPosition- 1].userAnswerIndex = binding.findViewById<RadioButton>(checkedId).text.toString().toInt() - 1
+                }
 
+            }
             setRecyclerViewAnimation(context, binding, position)
         }
     }
@@ -108,13 +147,14 @@ class CreateTestRecyclerAdapter(
         private val binding: View
     ) : RecyclerView.ViewHolder(binding) {
 
-        fun setData(model: TestModel) {
+        fun setData(model: TestQuestion) {
+
             binding.findViewById<MaterialButton>(R.id.add).setOnClickListener {
                 try {
                     if (data.size == 12){
                         throw Exception("ERROR")
                     }else{
-                        data.add(TestModel())
+                        data.add(TestQuestion())
                         notifyDataSetChanged()
                     }
                 }catch (e: Exception){
@@ -145,7 +185,7 @@ class CreateTestRecyclerAdapter(
         }
     }
 
-    fun updateRecyclerAdapter(news: ArrayList<TestModel>) {
+    fun updateRecyclerAdapter(news: ArrayList<TestQuestion>) {
         if (news.size == 1) {
             animatedPosition = -1
         }

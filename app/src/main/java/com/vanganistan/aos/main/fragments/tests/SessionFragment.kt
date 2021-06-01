@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
+import com.vanganistan.aos.R
 import com.vanganistan.aos.databinding.SessionFragmentBinding
 import com.vanganistan.aos.models.Test
 
@@ -31,6 +33,22 @@ class SessionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val test = Test()
+        list.forEach {
+            test.tests.addAll(it.tests)
+        }
+
+        binding.btnNext.setOnClickListener {
+          if (list.isNotEmpty()){
+              Navigation.findNavController(requireActivity(),
+                  R.id.nav_host_fragment
+              ).navigate(
+                  R.id.action_testsFragment_to_answerTestFragment, bundleOf(
+                      "item" to test,
+                      "title" to "Сессия"
+                  ))
+          }
+        }
 
     }
 

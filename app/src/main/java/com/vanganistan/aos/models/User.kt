@@ -1,12 +1,17 @@
-package com.nambasoft.stepapp.app_models
+package com.vanganistan.aos.models
+
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+
 
 data class User(
-    var name: String? = "",
-    var email: String? = "",
-    var password: String? = "",
-    var instagram: String? = "",
-    var interests: ArrayList<String>? = null,
-    var userImage: String? = null
-)
 
-data class UserInterests(var interests: ArrayList<String>? = null)
+    var email: String? = "",
+    var name: String? = "",
+    var group: String? = "",
+    var number: String? = "",
+    var userImage: String? = null,
+    @SerializedName("actions")
+    @Expose
+    val actions: HashMap<String, UserTestAction>? = null
+)

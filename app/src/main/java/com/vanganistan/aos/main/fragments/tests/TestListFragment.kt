@@ -43,11 +43,29 @@ class TestListFragment : Fragment() {
         binding.myRecyclerView.apply {
             setItemViewCacheSize(30)
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            adapter = TestListAdapter(list, {
+            if (list.isNotEmpty()){
+                adapter = TestListAdapter(list, {
+                    Navigation.findNavController(requireActivity(),
+                        R.id.nav_host_fragment
+                    ).navigate(R.id.action_testsFragment_to_answerTestFragment, bundleOf(
+                        "item" to it,
+                        "title" to it.tests.first().lectureName
+                    ))
+                }, {
+                    val test = Test()
+                    it.forEach {
+                        test.tests.addAll(it.tests)
+                    }
+                    test.tests.shuffled()
 
-            }, {
-
-            })
+                    Navigation.findNavController(requireActivity(),
+                        R.id.nav_host_fragment
+                    ).navigate(R.id.action_testsFragment_to_answerTestFragment, bundleOf(
+                        "item" to test,
+                        "title" to "Модуль №${test.tests.first().module}"
+                    ))
+                })
+            }
             binding.myRecyclerView.scheduleLayoutAnimation()
             setHasFixedSize(true)
         }

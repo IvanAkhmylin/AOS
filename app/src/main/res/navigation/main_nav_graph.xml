@@ -11,9 +11,26 @@
         android:label="Лабораторные" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.vanganistan.aos.main.fragments.ProfileFragment"
+        android:name="com.vanganistan.aos.main.fragments.profile.ProfileFragment"
         android:label="Профиль"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_analyticTestFragment"
+            app:destination="@id/analyticTestFragment"
+            app:enterAnim="@anim/enter_left"
+            app:popUpTo="@+id/profileFragment"
+            app:popUpToInclusive="false"
+            app:exitAnim="@anim/exit_right"
+            app:popEnterAnim="@anim/pop_enter_left"
+            app:popExitAnim="@anim/pop_exit_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.vanganistan.aos.main.fragments.chat.ChatFragment"
+        android:label="Чат"
+        tools:layout="@layout/fragment_chat" />
+
     <fragment
         android:id="@+id/lectureFragment"
         android:name="com.vanganistan.aos.main.fragments.lecture.LectureFragment"
@@ -41,6 +58,15 @@
             app:exitAnim="@anim/exit_right"
             app:popEnterAnim="@anim/pop_enter_left"
             app:popExitAnim="@anim/pop_exit_right"/>
+        <action
+            android:id="@+id/action_testsFragment_to_answerTestFragment"
+            app:destination="@id/answerTestFragment"
+            app:enterAnim="@anim/enter_left"
+            app:exitAnim="@anim/exit_right"
+            app:popEnterAnim="@anim/pop_enter_left"
+            app:popExitAnim="@anim/pop_exit_right">
+        </action>
+
     </fragment>
 
     <fragment
@@ -64,5 +90,47 @@
         android:id="@+id/createTestFragment"
         tools:layout="@layout/create_test_fragment"
         android:name="com.vanganistan.aos.main.fragments.tests.CreateTestFragment"
-        android:label="Создание теста" />
+        android:label="Создание теста">
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/answerTestFragment"
+        tools:layout="@layout/answer_test_fragment"
+        android:name="com.vanganistan.aos.main.fragments.tests.AnswerTestFragment"
+        android:label="{title}">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_answerTestFragment_to_analyticTestFragment"
+            app:destination="@id/analyticTestFragment"
+            app:enterAnim="@anim/enter_left"
+            app:exitAnim="@anim/exit_right"
+            app:popUpTo="@+id/testsFragment"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/pop_enter_left"
+            app:popExitAnim="@anim/pop_exit_right"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/analyticTestFragment"
+        tools:layout="@layout/analytic_test_fragment"
+        android:name="com.vanganistan.aos.main.fragments.tests.AnalyticTestFragment"
+        android:label="Аналитика" >
+
+        <action
+            android:id="@+id/action_analyticTestFragment_to_lectureDetailsFragment"
+            app:destination="@id/lectureDetailsFragment"
+            app:enterAnim="@anim/enter_left"
+            app:exitAnim="@anim/exit_right"
+            app:popEnterAnim="@anim/pop_enter_left"
+            app:popExitAnim="@anim/pop_exit_right"/>
+
+    </fragment>
 </navigation>

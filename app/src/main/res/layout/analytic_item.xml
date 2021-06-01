@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="#4DF0F2FF"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#DEE1E8"
+        app:strokeWidth="0.7dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/tests_arrow_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_question"
+                app:layout_constraintBottom_toBottomOf="@+id/question"
+                app:layout_constraintEnd_toStartOf="@+id/question"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/question" />
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/rubik_light"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tests_arrow_image"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Ktкция фыовфоыофоывофо фо оыов фоыовофоы овфывфоыво" />
+
+
+            <View
+                android:id="@+id/tests_widget__footer"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="11dp"
+                android:background="#F0F2FF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/question" />
+
+            <TextView
+                android:id="@+id/tests_widget__total_accrued"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="17dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/rubik_light"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:text="Ответ: "
+                android:textColor="#000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tests_widget__footer" />
+
+
+            <TextView
+                android:id="@+id/test_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/rubik_light"
+                android:includeFontPadding="false"
+                android:textColor="#000"
+                android:textFontWeight="600"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/tests_widget__footer"
+                app:layout_constraintEnd_toStartOf="@+id/tests_icon_cash"
+                app:layout_constraintTop_toTopOf="@id/tests_widget__footer"
+                tools:text="Верный" />
+
+            <ImageView
+                android:id="@+id/tests_icon_cash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_test"
+                app:layout_constraintBottom_toBottomOf="@+id/test_status"
+                app:layout_constraintEnd_toEndOf="@+id/tests_widget__footer"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintTop_toTopOf="@+id/test_status"
+                tools:ignore="contentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/move_to"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="#4DF0F2FF"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#DEE1E8"
+        app:strokeWidth="0.7dp">
+        <TextView
+            android:layout_margin="16dp"
+            android:fontFamily="@font/rubik_light"
+            android:includeFontPadding="false"
+            android:textColor="#3F51B5"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Перейти к лекции"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

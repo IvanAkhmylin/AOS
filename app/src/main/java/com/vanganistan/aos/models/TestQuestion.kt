@@ -4,10 +4,15 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class TestModel (
+data class TestQuestion (
     var answers: ArrayList<String> = arrayListOf("", "", "", ""),
     var question: String = "",
-    var trueAnswerIndex: Int = 0
+    var trueAnswerIndex: Int = 0,
+    var userAnswerIndex: Int = -1,
+    var lectureId: Int = -1,
+    var module: Int = -1,
+    var lectureName: String = ""
+
 ) : Parcelable {
     fun validate() : Boolean {
         val filter = answers.filter { it.trim().isEmpty() }
@@ -19,13 +24,16 @@ data class TestModel (
             true
         }
     }
+
+    fun answerValid() : Boolean{
+        return userAnswerIndex != -1
+    }
+
+    fun isUserAnswerTrue() = trueAnswerIndex == userAnswerIndex
 }
 
 @Parcelize
 data class Test (
     var id: Int = -1,
-    var tests: ArrayList<TestModel> = arrayListOf(),
-    var lectureId: Int = -1,
-    var module: Int = -1,
-    var lectureName: String = ""
+    var tests: ArrayList<TestQuestion> = arrayListOf()
 ) : Parcelable

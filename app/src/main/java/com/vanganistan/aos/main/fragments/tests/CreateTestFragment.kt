@@ -3,7 +3,6 @@ package com.vanganistan.aos.main.fragments.tests
 import android.R
 import android.app.ProgressDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +22,7 @@ import com.vanganistan.aos.main.fragments.lecture.ContentViewModel
 import com.vanganistan.aos.main.fragments.tests.adapters.CreateTestRecyclerAdapter
 import com.vanganistan.aos.models.Lecture
 import com.vanganistan.aos.models.Test
-import com.vanganistan.aos.models.TestModel
+import com.vanganistan.aos.models.TestQuestion
 import java.util.*
 
 
@@ -32,7 +31,7 @@ class CreateTestFragment : Fragment() {
     private var _binding: CreateTestFragmentBinding? = null
     private val binding: CreateTestFragmentBinding get() = _binding!!
     val lectures = ArrayList<Lecture>()
-    var list: ArrayList<TestModel> = arrayListOf(TestModel())
+    var list: ArrayList<TestQuestion> = arrayListOf(TestQuestion())
     val test = Test()
     private lateinit var progressDialog: ProgressDialog
 
@@ -70,9 +69,6 @@ class CreateTestFragment : Fragment() {
 
                             if (it.data.isNotEmpty()){
                                 lectures.addAll(it.data)
-                                test.lectureId = it.data[0].id
-                                test.lectureName = it.data[0].fileDescription
-                                test.module = it.data[0].module
 
                                 ArrayAdapter(
                                     requireContext(),
@@ -89,11 +85,24 @@ class CreateTestFragment : Fragment() {
 
 
                                 binding.spinner.setOnItemClickListener { parent, view, position, id ->
-                                    test.lectureId = it.data[position].id
-                                    test.lectureName = it.data[position].fileDescription
-                                    test.module = it.data[position].module
+                                    val data = (binding.myRecyclerView.adapter as CreateTestRecyclerAdapter).data
+                                    data.forEach { data ->
+                                        data.lectureId = it.data[position].id
+                                        data.lectureName = it.data[position].fileDescription
+                                        data.module = it.data[position].module
+                                    }
+
+                                    (binding.myRecyclerView.adapter as CreateTestRecyclerAdapter).data = data
                                 }
 
+                                val data = (binding.myRecyclerView.adapter as CreateTestRecyclerAdapter).data
+                                data.forEach { data ->
+                                    data.lectureId = lectures[0].id
+                                    data.lectureName = lectures[0].fileDescription
+                                    data.module = lectures[0].module
+                                }
+
+                                (binding.myRecyclerView.adapter as CreateTestRecyclerAdapter).data = data
                             }
 
                         }
@@ -116,9 +125,7 @@ class CreateTestFragment : Fragment() {
         binding.myRecyclerView.apply {
             setItemViewCacheSize(30)
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            adapter = CreateTestRecyclerAdapter{ item ->
-
-            }
+            adapter = CreateTestRecyclerAdapter()
             binding.myRecyclerView.scheduleLayoutAnimation()
             setHasFixedSize(true)
 

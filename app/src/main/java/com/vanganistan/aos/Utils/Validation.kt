@@ -3,6 +3,9 @@ package com.vanganistan.aos.Utils
 import android.text.TextUtils
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatEditText
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Validation {
 
@@ -57,5 +60,10 @@ object Validation {
         return valid
     }
 
+    fun getCurrentDate(): String {
+        val dateFormat: DateFormat = SimpleDateFormat("dd.MM.yyyy / HH:mm")
+        val date = Date()
+        return dateFormat.format(date)
+    }
 
 }

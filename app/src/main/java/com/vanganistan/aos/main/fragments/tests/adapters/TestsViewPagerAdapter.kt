@@ -18,11 +18,11 @@ class TestsViewPagerAdapter(
 
     override fun createFragment(position: Int): Fragment {
         return if (position == 0){
-            TestListFragment.newInstance(salaryInfo.filter { it.module == 1})
+            TestListFragment.newInstance(salaryInfo.filter { it.tests.first().module == 1})
         }else if (position == 2){
             SessionFragment.newInstance(salaryInfo)
         }else{
-            TestListFragment.newInstance(salaryInfo.filter { it.module == 2})
+            TestListFragment.newInstance(salaryInfo.filter { it.tests.first().module == 2})
         }
     }
 

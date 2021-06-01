@@ -60,8 +60,8 @@ class TestListAdapter(
         private val binding: View
     ) : RecyclerView.ViewHolder(binding) {
         fun setData(data: Test) {
-            binding.findViewById<TextView>(R.id.tests_lecture_name).text = data.lectureName
-            binding.findViewById<TextView>(R.id.tests_size).text = data.tests.size.toString()
+            binding.findViewById<TextView>(R.id.question).text = data.tests.first().lectureName
+            binding.findViewById<TextView>(R.id.test_status).text = data.tests.size.toString()
             binding.setOnClickListener {
                 onItemClick(data)
             }
@@ -73,7 +73,7 @@ class TestListAdapter(
     ) : RecyclerView.ViewHolder(binding) {
 
          fun setData(data: Test) {
-             binding.findViewById<TextView>(R.id.test_module).text = "Пройти тестирование за ${data.module.toString()} модуль"
+             binding.findViewById<TextView>(R.id.test_module).text = "Пройти тестирование за ${data.tests.first().module.toString()} модуль"
 
              binding.setOnClickListener {
                  onHeaderClick(items)

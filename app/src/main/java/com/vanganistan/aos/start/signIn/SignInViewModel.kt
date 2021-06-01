@@ -1,13 +1,16 @@
 package com.vanganistan.aos.start.signIn
 
+import android.net.Uri
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.vanganistan.aos.Repository
-import com.vanganistan.aos.Utils.Constants
 import com.vanganistan.aos.Utils.Resource
+import com.vanganistan.aos.models.User
 
 class SignInViewModel: ViewModel(){
     val signInLiveData = MutableLiveData<Resource<String>>()
+    val userLiveData = MutableLiveData<Resource<Boolean>>()
     val userUtilsResult = MutableLiveData<String>()
 
     fun deleteCurrentUser() {
@@ -37,5 +40,16 @@ class SignInViewModel: ViewModel(){
             signInLiveData.value = it
         }
     }
+
+    fun getUserData(uID: String) : LiveData<User> =
+        Repository().getUserData(id = uID)
+
+    fun setupUserProfileImage(uri: Uri?) {
+        userLiveData.value = Resource.loading()
+        Repository().setupUserImage(uri){
+            userLiveData.postValue(Resource.success(true))
+        }
+    }
+
 
 }

@@ -228,7 +228,6 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:button="@drawable/credit_radio"
-                            android:checked="true"
                             android:fontFamily="@font/rubik_light"
                             android:includeFontPadding="false"
                             android:text="1"

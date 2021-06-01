@@ -27,12 +27,12 @@
             android:layout_marginEnd="16dp"
             android:src="@drawable/icv_accounts_arrow"
             android:tint="#C3C8D5"
-            app:layout_constraintBottom_toBottomOf="@+id/tests_lecture_name"
+            app:layout_constraintBottom_toBottomOf="@+id/question"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tests_lecture_name" />
+            app:layout_constraintTop_toTopOf="@+id/question" />
 
         <TextView
-            android:id="@+id/tests_lecture_name"
+            android:id="@+id/question"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             tools:text="Ktкция фыовфоыофоывофо фо оыов фоыовофоы овфывфоыво"
@@ -59,7 +59,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="11dp"
-            app:layout_constraintTop_toBottomOf="@+id/tests_lecture_name" />
+            app:layout_constraintTop_toBottomOf="@+id/question" />
 
         <ImageView
             android:id="@+id/tests_icon_cash"
@@ -88,13 +88,13 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/tests_icon_cash"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintEnd_toStartOf="@+id/tests_size"
+            app:layout_constraintEnd_toStartOf="@+id/test_status"
             app:layout_constraintStart_toEndOf="@id/tests_icon_cash"
             app:layout_constraintTop_toTopOf="@id/tests_icon_cash"  />
 
 
         <TextView
-            android:id="@+id/tests_size"
+            android:id="@+id/test_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
