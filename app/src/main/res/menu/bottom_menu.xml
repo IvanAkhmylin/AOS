@@ -42,4 +42,11 @@
         android:orderInCategory="5"
         android:title="Чат"/>
 
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:showAsAction="always"
+        android:orderInCategory="6"
+        android:title="Поиск"/>
+
 </menu>

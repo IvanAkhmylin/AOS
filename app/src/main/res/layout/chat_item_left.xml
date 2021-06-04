@@ -38,6 +38,7 @@
         app:layout_constraintWidth_default="wrap"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/profile_image"
+        android:autoLink="all"
         android:layout_centerVertical="true"
         android:gravity="start"
         android:layout_toRightOf="@id/profile_image"

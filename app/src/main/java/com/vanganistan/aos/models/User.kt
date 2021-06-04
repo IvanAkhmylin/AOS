@@ -10,8 +10,9 @@ data class User(
     var name: String? = "",
     var group: String? = "",
     var number: String? = "",
+    var uid: String? = "",
     var userImage: String? = null,
     @SerializedName("actions")
     @Expose
-    val actions: HashMap<String, UserTestAction>? = null
+    val actions: ArrayList<UserTestAction>? = null
 )

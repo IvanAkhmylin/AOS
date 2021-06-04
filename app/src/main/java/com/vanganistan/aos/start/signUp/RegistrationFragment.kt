@@ -106,8 +106,8 @@ class RegistrationFragment : Fragment() {
 
         binding.btnNext.setOnClickListener {
 
-            if (Validation.emailValid(binding.email) && Validation.passValid(binding.email) &&
-                Validation.groupValid(binding.group) && Validation.nameValid(binding.name)
+            if (Validation.emailValid(binding.email) && Validation.passValid(binding.password) &&
+                Validation.groupValid(binding.group) && Validation.nameValid(binding.name) && Validation.numberValid(binding.number)
             ) {
 
                 userData["email"] = binding.email.text.toString().trim()

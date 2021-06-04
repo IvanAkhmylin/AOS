@@ -3,14 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.fragments.profile.ProfileFragment">
 
-    <TextView
-        android:textSize="30sp"
+    <ProgressBar
+        android:id="@+id/progress"
+        android:visibility="gone"
+        tools:visibility="visible"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_width="match_parent"
+        android:layout_width="48dp"
+        android:layout_height="48dp"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LABS" />
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_add"
+        android:layout_margin="16dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/labs_item"
+        android:overScrollMode="never"
+        android:paddingBottom="50dp"
+        android:clipToPadding="false"
+        tools:itemCount="4"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_height="wrap_content" />
+
+
 
 </FrameLayout>

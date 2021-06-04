@@ -35,6 +35,8 @@ class ChatFragment : Fragment() {
 
     private lateinit var mViewModel: SignInViewModel
     private var uID = ""
+
+
     private val event = object : ValueEventListener{
         override fun onCancelled(p0: DatabaseError) {
             binding.loader.visibility = View.GONE
@@ -100,20 +102,20 @@ class ChatFragment : Fragment() {
     }
 
 
-    private fun readMessages() {
-        mChat = arrayListOf()
 
-        reference = FirebaseDatabase.getInstance().getReference("chat")
-        reference!!.addValueEventListener(event)
-    }
 
     override fun onPause() {
         super.onPause()
         reference?.removeEventListener(event)
     }
 
-    private fun sendMessage(sender: String?, msg: String) {
+    private fun readMessages() {
+        mChat = arrayListOf()
+        reference = FirebaseDatabase.getInstance().getReference("chat")
+        reference!!.addValueEventListener(event)
+    }
 
+    private fun sendMessage(sender: String?, msg: String) {
         val reference = FirebaseDatabase.getInstance().reference
         val chat = Chat(
             senderId = sender,
@@ -125,21 +127,7 @@ class ChatFragment : Fragment() {
         )
 
         reference.child("chat").push().setValue(chat)
-
-
-//        // for notification use
-//        reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fuser?.uid!!)
-//        reference.addListenerForSingleValueEvent(object : ValueEventListener{
-//            override fun onCancelled(p0: DatabaseError) {
-//
-//            }
-//
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                val user = dataSnapshot.getValue(User::class.java)
-//                // fot notification
-//            }
-//
-//        })
+        readMessages()
     }
 
 }

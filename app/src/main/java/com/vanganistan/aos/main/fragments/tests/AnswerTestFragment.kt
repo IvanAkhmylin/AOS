@@ -107,6 +107,8 @@ class AnswerTestFragment : Fragment() {
                 }
             }
 
+
+
             info = UserTestAction(
                 date = Date().time,
                 title = getTitle(type),

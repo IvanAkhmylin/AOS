@@ -29,6 +29,10 @@ import androidx.core.os.bundleOf
 import com.theartofdev.edmodo.cropper.CropImage.getPickImageChooserIntent
 import com.vanganistan.aos.models.UserTestAction
 import android.icu.lang.UCharacter.GraphemeClusterBreak.V
+import androidx.appcompat.app.AppCompatActivity
+
+
+
 
 
 class ProfileFragment : Fragment() {
@@ -41,6 +45,7 @@ class ProfileFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         uID = arguments?.getString("uid") ?: App.mAuth.uid.toString()
+
         mViewModel =
             ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory()).get(
                 SignInViewModel::class.java
@@ -59,6 +64,16 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (App.mAuth.uid.toString() != uID){
+            binding.btnNext.visibility = View.GONE
+        }else{
+            binding.avatar.setOnClickListener {
+                CropImage.activity()
+                    .setAspectRatio(1, 1)
+                    .setGuidelines(CropImageView.Guidelines.OFF)
+                    .start(requireActivity() as StartActivity)
+            }
+        }
         mViewModel.getUserData(uID).observe(viewLifecycleOwner, Observer { initUser(it) })
         mViewModel.signInLiveData.observe(viewLifecycleOwner, signInObserver)
 
@@ -77,12 +92,7 @@ class ProfileFragment : Fragment() {
                 binding.avatar.setImageURI(Uri.parse(it.userImage))
             }
 
-            binding.avatar.setOnClickListener {
-                CropImage.activity()
-                    .setAspectRatio(1, 1)
-                    .setGuidelines(CropImageView.Guidelines.OFF)
-                    .start(requireActivity() as StartActivity)
-            }
+
             it.actions?.let {
                 if (it.isNullOrEmpty()) {
                     binding.empty.visibility = View.VISIBLE
@@ -90,7 +100,7 @@ class ProfileFragment : Fragment() {
                 } else {
                     binding.empty.visibility = View.GONE
                     binding.myRecyclerView.visibility = View.VISIBLE
-                    val list: List<UserTestAction> = ArrayList<UserTestAction>(it.values)
+                    val list: List<UserTestAction> = ArrayList<UserTestAction>(it)
                     binding.myRecyclerView.adapter = UserActionsAdapter(list.sortedByDescending { it.date }) {
                         Navigation.findNavController(
                             requireActivity(),

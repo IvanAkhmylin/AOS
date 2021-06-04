@@ -12,6 +12,7 @@ class SignInViewModel: ViewModel(){
     val signInLiveData = MutableLiveData<Resource<String>>()
     val userLiveData = MutableLiveData<Resource<Boolean>>()
     val userUtilsResult = MutableLiveData<String>()
+    val usersLiveData = MutableLiveData<Resource<ArrayList<User>>>()
 
     fun deleteCurrentUser() {
         signInLiveData.value = Resource.loading()
@@ -48,6 +49,13 @@ class SignInViewModel: ViewModel(){
         userLiveData.value = Resource.loading()
         Repository().setupUserImage(uri){
             userLiveData.postValue(Resource.success(true))
+        }
+    }
+
+    fun getUsers() {
+        usersLiveData.value = Resource.loading()
+        Repository().getUsers(){
+            usersLiveData.postValue(it)
         }
     }
 

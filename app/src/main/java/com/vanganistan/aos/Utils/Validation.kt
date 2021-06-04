@@ -66,4 +66,15 @@ object Validation {
         return dateFormat.format(date)
     }
 
+    fun numberValid(number: AppCompatEditText): Boolean {
+        var valid = true
+
+        if (number.text!!.trim().isEmpty() || number.text.toString().length < 9) {
+            number.error = "Номер не может быть таким коротким"
+            valid = false
+        }
+
+        return valid
+    }
+
 }

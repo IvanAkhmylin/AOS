@@ -6,9 +6,17 @@
     app:startDestination="@id/lectureFragment">
     <fragment
         android:id="@+id/labsFragment"
-        android:name="com.vanganistan.aos.main.fragments.LabsFragment"
+        android:name="com.vanganistan.aos.main.fragments.labs.LabsFragment"
         tools:layout="@layout/fragment_labs"
-        android:label="Лабораторные" />
+        android:label="Лабораторные" >
+        <action
+            app:enterAnim="@anim/enter_left"
+            app:exitAnim="@anim/exit_right"
+            app:popEnterAnim="@anim/pop_enter_left"
+            app:popExitAnim="@anim/pop_exit_right"
+            android:id="@+id/action_labsFragment_to_labDetailsFragment"
+            app:destination="@id/labDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.vanganistan.aos.main.fragments.profile.ProfileFragment"
@@ -30,6 +38,20 @@
         android:name="com.vanganistan.aos.main.fragments.chat.ChatFragment"
         android:label="Чат"
         tools:layout="@layout/fragment_chat" />
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.vanganistan.aos.main.fragments.search.SearchFragment"
+        android:label="Поиск студентов"
+        tools:layout="@layout/search_fragment" >
+        <action
+            app:enterAnim="@anim/enter_left"
+            app:exitAnim="@anim/exit_right"
+            app:popEnterAnim="@anim/pop_enter_left"
+            app:popExitAnim="@anim/pop_exit_right"
+            android:id="@+id/action_searchFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/lectureFragment"
@@ -132,5 +154,13 @@
             app:popEnterAnim="@anim/pop_enter_left"
             app:popExitAnim="@anim/pop_exit_right"/>
 
+    </fragment>
+    <fragment
+        android:id="@+id/labDetailsFragment"
+        android:name="com.vanganistan.aos.main.fragments.labs.LabDetailsFragment"
+        android:label="{title}" >
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 </navigation>

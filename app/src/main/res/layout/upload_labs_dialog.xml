@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/credit_black_list__title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:paddingStart="16dp"
+        android:gravity="center"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp"
+        android:text="Форма для отправки лабораторной работы"
+        android:fontFamily="@font/rubik_light"
+        android:includeFontPadding="false"
+        android:textColor="#000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:includeFontPadding="false"
+        android:textSize="14sp"
+        app:endIconTint="@color/colorTextInputLayoutPasswordToggle"
+        app:errorIconDrawable="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/credit_black_list__title">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/lecture_name"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="password"
+            android:ems="10"
+            android:maxLines="2"
+            android:lines="2"
+            android:hint="Введите описание"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/lab_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/action_template_background">
+
+            <ImageView
+                android:id="@+id/status_load_lab"
+                android:layout_width="64dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp"
+                android:src="@drawable/ic_file"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="contentDescription" />
+
+            <TextView
+                android:id="@+id/status_load__title_lab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Задание"
+                android:textAllCaps="true"
+                android:fontFamily="@font/rubik_light"
+                android:textColor="@color/black"
+                android:includeFontPadding="false"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/status_load_lab"
+                app:layout_constraintTop_toTopOf="@id/status_load_lab" />
+
+            <TextView
+                android:id="@+id/status_load__description_lab"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="52dp"
+                android:fontFamily="@font/rubik_light"
+                android:textColor="@color/black"
+                android:includeFontPadding="false"
+                android:text="Перейдите в файлы системы что бы загрузить PDF файл лабораторных"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@id/status_load__add_lab"
+                app:layout_constraintStart_toEndOf="@id/status_load_lab"
+                app:layout_constraintTop_toBottomOf="@id/status_load__title_lab" />
+
+            <ImageView
+                android:id="@+id/status_load__add_lab"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/icv_add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="contentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/education_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lab_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/action_template_background">
+
+            <ImageView
+                android:id="@+id/status_load_lab_edu"
+                android:layout_width="64dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp"
+                android:src="@drawable/ic_file"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="contentDescription" />
+
+            <TextView
+                android:id="@+id/status_load__title_edu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Объяснение"
+                android:textAllCaps="true"
+                android:fontFamily="@font/rubik_light"
+                android:textColor="@color/black"
+                android:includeFontPadding="false"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/status_load_lab_edu"
+                app:layout_constraintTop_toTopOf="@id/status_load_lab_edu" />
+
+            <TextView
+                android:id="@+id/status_load__description_edu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="52dp"
+                android:fontFamily="@font/rubik_light"
+                android:includeFontPadding="false"
+                android:text="Перейдите в файлы системы что бы загрузить PDF файл обьяснений"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/status_load__add_edu"
+                app:layout_constraintStart_toEndOf="@id/status_load_lab_edu"
+                app:layout_constraintTop_toBottomOf="@id/status_load__title_edu" />
+
+            <ImageView
+                android:id="@+id/status_load__add_edu"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/icv_add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="contentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button"
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginVertical="32dp"
+        android:fontFamily="@font/rubik_light"
+        android:text="Загрузить лабораторную"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/education_card"
+        android:textAllCaps="false"
+        android:textSize="@dimen/small_text_size"
+        android:textStyle="bold" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

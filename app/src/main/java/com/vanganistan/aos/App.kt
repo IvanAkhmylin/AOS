@@ -18,6 +18,7 @@ class App: Application() {
         lateinit var mAuth: FirebaseAuth
         lateinit var mStorage: StorageReference
         lateinit var mLectureStorage: StorageReference
+        lateinit var mLabStorage: StorageReference
         lateinit var mLectureLectureDB: CollectionReference
         @SuppressLint("StaticFieldLeak")
         lateinit var db: FirebaseFirestore
@@ -37,6 +38,7 @@ class App: Application() {
 
         mStorage = FirebaseStorage.getInstance().reference
         mLectureStorage = FirebaseStorage.getInstance().reference.child("lectures")
+        mLabStorage = FirebaseStorage.getInstance().reference.child("labs")
         sharedPreferences = getSharedPreferences("AOS", Context.MODE_PRIVATE)
         editor = sharedPreferences.edit()
         usersDB = FirebaseFirestore.getInstance().collection("users")

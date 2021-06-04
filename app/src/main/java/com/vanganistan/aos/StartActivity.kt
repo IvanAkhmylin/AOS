@@ -12,7 +12,6 @@ import androidx.navigation.Navigation
 import com.theartofdev.edmodo.cropper.CropImage
 import com.vanganistan.aos.start.signIn.SignInViewModel
 
-
 class StartActivity : AppCompatActivity() {
     private lateinit var mViewModel: SignInViewModel
 
@@ -30,7 +29,7 @@ class StartActivity : AppCompatActivity() {
 
         if(App.mAuth.currentUser != null && App.mAuth.currentUser!!.isEmailVerified){
             navGraph.startDestination = R.id.mainFragment
-        }else{
+        }else {
             navGraph.startDestination = R.id.startScreenFragment
         }
 
